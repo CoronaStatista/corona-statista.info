@@ -15,6 +15,7 @@ function App() {
           <p className="text-gray-700 text-base">Nischay</p>
           <p className="text-gray-700 text-base">Shilpa</p>
           <p className="text-gray-700 text-base">Rony</p>
+          <p className="text-gray-700 text-base">Wagner</p>
         </div>
         <div className="px-6 py-4">
           {["SCS", "Corona", "Stats", "Info"].map((tag) => (
