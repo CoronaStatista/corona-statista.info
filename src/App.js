@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import covid19Fetcher from "simple-covid19-json-fetcher";
 import { startOfDay } from "date-fns";
 import useSwr from "swr";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Header from "./components/Header";
+import "./main.css";
 
 const getStartOfToday = () => startOfDay(new Date());
 
@@ -33,82 +36,76 @@ const App = () => {
   }
 
   return (
-    <div>
-      {countries
-        .filter((c) => c.name === "Germany")
-        .map((country) => (
-          <div key={country.name}>
-            <h1>{country.name}</h1>
-            <div>
-              <span>Active: </span>
-              <span>{country.active}</span>
+    <div class="grid bg-yellow-100">
+      <Router>
+        <Header />
+        <div className="Banner"></div>
+        {countries
+          .filter((c) => c.name === "Germany")
+          .map((country) => (
+            <div key={country.name}>
+              <h3 class="font-bold">{country.name}</h3>
               <br />
-              <span>Confirmed: </span>
-              <span>{country.confirmed}</span>
-              <br />
-              <span>Deaths: </span>
-              <span>{country.deaths}</span>
-              <br />
-              <span>Recovered: </span>
-              <span>{country.recovered}</span>
-            </div>
 
-            <br />
-            <br />
-            <hr />
+              <div>
+                <span class="font-bold">Active: </span>
+                <span>{country.active}</span>
+                <br />
+                <span class="font-bold">Confirmed: </span>
+                <span>{country.confirmed}</span>
+                <br />
+                <span class="font-bold">Deaths: </span>
+                <span>{country.deaths}</span>
+                <br />
+                <span class="font-bold">Recovered: </span>
+                <span>{country.recovered}</span>
+              </div>
 
-            {country.states.length !== 0 ? (
-              <select id="states" onChange={handleChange}>
-                {country.states.map((state) => (
-                  <option key={state.name} value={state.name}>
-                    {state.name}
-                  </option>
-                ))}
-              </select>
-            ) : null}
-            <div>
-              <br />
-              {stats ? (
-                <>
-                  <ul>
-                    <li>Active: {stats.active}</li>
-                    <li>Confirmed: {stats.confirmed}</li>
-                    <li>Deaths: {stats.deaths}</li>
-                    <li>Recovered: {stats.recovered}</li>
-                  </ul>
-                </>
-              ) : null}
-              <br />
-              <br />
               <br />
               <br />
               <hr />
-            </div>
-            <hr />
-            <div>
-              {country.states.map((state) => (
-                <div key={state.name}>
-                  <p>
-                    <b>{state.name}</b>
-                  </p>
-                  <div>
-                    <span>Active: </span>
-                    <span>{state.active}</span>
-                    <br />
-                    <span>Confirmed: </span>
-                    <span>{state.confirmed}</span>
-                    <br />
-                    <span>Deaths: </span>
-                    <span>{state.deaths}</span>
-                    <br />
-                    <span>Recovered: </span>
-                    <span>{state.recovered}</span>
-                  </div>
+              <div class="flex flex-row">
+                <div>
+                  {country.states.length !== 0 ? (
+                    <select id="states" onChange={handleChange}>
+                      {country.states.map((state) => (
+                        <option key={state.name} value={state.name}>
+                          {state.name}
+                        </option>
+                      ))}
+                    </select>
+                  ) : null}
                 </div>
-              ))}
+                <div class="ml-20">
+                  {stats ? (
+                    <>
+                      <ul>
+                        <li>
+                          <span class="font-bold">Active:</span> {stats.active}
+                        </li>
+                        <li>
+                          <span class="font-bold">Confirmed:</span>{" "}
+                          {stats.confirmed}
+                        </li>
+                        <li>
+                          <span class="font-bold">Deaths:</span> {stats.deaths}
+                        </li>
+                        <li>
+                          <span class="font-bold">Recovered:</span>
+                          {stats.recovered}
+                        </li>
+                      </ul>
+                    </>
+                  ) : null}
+                  <br />
+                  <br />
+                  <hr />
+                </div>
+              </div>
+              <hr />
             </div>
-          </div>
-        ))}
+          ))}
+      </Router>
     </div>
   );
 };
