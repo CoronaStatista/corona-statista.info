@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import covid19Fetcher from "simple-covid19-json-fetcher";
 import { startOfDay } from "date-fns";
 import useSwr from "swr";
-import "./main.css";
+import "./Default.css";
 
 const getStartOfToday = () => startOfDay(new Date());
 
-const Home = () => {
+const StateStats = () => {
   const { data: countries, error } = useSwr(getStartOfToday(), covid19Fetcher);
   const [stats, setStats] = useState(null);
 
@@ -34,36 +34,20 @@ const Home = () => {
   }
 
   return (
-    <div class="grid bg-yellow-100">
-      <div className="Banner"></div>
+    <>
       {countries
         .filter((c) => c.name === "Germany")
         .map((country) => (
-          <div key={country.name}>
-            <h3 class="font-bold">{country.name}</h3>
-            <br />
-
-            <div>
-              <span class="font-bold">Active: </span>
-              <span>{country.active}</span>
-              <br />
-              <span class="font-bold">Confirmed: </span>
-              <span>{country.confirmed}</span>
-              <br />
-              <span class="font-bold">Deaths: </span>
-              <span>{country.deaths}</span>
-              <br />
-              <span class="font-bold">Recovered: </span>
-              <span>{country.recovered}</span>
+          <div class="flex flex-col">
+            <div class="flex flex-row border-2 border-black">
+              <div>Select a state</div>
+              <div class="ml-64">State</div>
             </div>
 
-            <br />
-            <br />
-            <hr />
-            <div class="flex flex-row">
+            <div class="flex flex-row border-2 border-black">
               <div>
                 {country.states.length !== 0 ? (
-                  <select id="states" onChange={handleChange}>
+                  <select onChange={handleChange}>
                     {country.states.map((state) => (
                       <option key={state.name} value={state.name}>
                         {state.name}
@@ -72,7 +56,7 @@ const Home = () => {
                   </select>
                 ) : null}
               </div>
-              <div class="ml-20">
+              <div class="ml-32">
                 {stats ? (
                   <>
                     <ul>
@@ -93,16 +77,12 @@ const Home = () => {
                     </ul>
                   </>
                 ) : null}
-                <br />
-                <br />
-                <hr />
               </div>
             </div>
-            <hr />
           </div>
         ))}
-    </div>
+    </>
   );
 };
 
-export default Home;
+export default StateStats;

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Header.css";
+import "./Default.css";
 
-function Navbar() {
+function Header() {
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
@@ -26,44 +26,59 @@ function Navbar() {
   };
 
   return (
-    <>
-      <nav className="navbar">
-        <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-          CORONA STATISTA
-          <i class="fab fa-firstdraft" />
-        </Link>
-        <ul className={click ? "nav-menu active" : "nav-menu"}>
-          <li className="nav-item">
-            <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-              Home
-            </Link>
-          </li>
-          <li
-            className="nav-item"
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-          >
-            <Link
-              to="/services"
-              className="nav-links"
-              onClick={closeMobileMenu}
-            >
-              About Corona <i className="fas fa-caret-down" />
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/contact-us"
-              className="nav-links"
-              onClick={closeMobileMenu}
-            >
-              Contact Us
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    </>
+    <div>
+      <div id="header-wrapper">
+        <div id="header" className="container">
+          <div id="logo">
+            <h1>
+              <a href="#">Corona Statista</a>
+            </h1>
+          </div>
+          <div id="menu">
+            <ul>
+              <li>
+                <Link to="/" onClick={closeMobileMenu}>
+                  Homepage
+                </Link>
+              </li>
+
+              <li
+                className="nav-item"
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
+              >
+                <Link
+                  to="/about"
+                  className="nav-links"
+                  onClick={closeMobileMenu}
+                >
+                  About Corona <i className="fas fa-caret-down" />
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact-us" onClick={closeMobileMenu}>
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="banner" className="container">
+          <p>
+            <b class="text-3xl">Protect yourself and others from COVID-19</b>
+            <hr />
+          </p>
+          <p>
+            If COVID-19 is spreading in your community, stay safe by taking some
+            simple precautions, such as physical distancing, wearing a mask,
+            keeping rooms well ventilated, avoiding crowds, cleaning your hands,
+            and coughing into a bent elbow or tissue. Check local advice where
+            you live and work. Do it all!
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }
 
-export default Navbar;
+export default Header;

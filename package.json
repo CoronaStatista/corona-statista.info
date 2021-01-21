@@ -6,14 +6,19 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "bootstrap": "^4.6.0",
     "date-fns": "^2.16.1",
+    "mdbreact": "^5.0.1",
+    "postcss": "^8.2.4",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.4.3",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
     "simple-covid19-json-fetcher": "^1.5.0",
     "swr": "^0.4.0",
-    "tailwindcss": "^1.4.6"
+    "tailwindcss": "^1.4.6",
+    "web-vitals": "^1.1.0"
   },
   "scripts": {
     "purge:css": "cross-env NODE_ENV=production postcss src/tailwind.css -o src/index.css",
@@ -43,6 +48,6 @@
     "autoprefixer": "^9.8.0",
     "cross-env": "^7.0.2",
     "cssnano": "^4.1.10",
-    "postcss-cli": "^7.1.1"
+    "postcss-cli": "^7.1.2"
   }
 }
