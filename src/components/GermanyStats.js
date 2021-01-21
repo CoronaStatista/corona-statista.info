@@ -29,7 +29,7 @@ const GermanyStats = () => {
             </h3>
             <br />
 
-            <div class="text-left border-2 border-green-300">
+            <div class="text-left">
               <span class="font-bold">Active: </span>
               <span>{country.active}</span>
               <br />

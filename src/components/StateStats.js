@@ -39,12 +39,12 @@ const StateStats = () => {
         .filter((c) => c.name === "Germany")
         .map((country) => (
           <div class="flex flex-col">
-            <div class="flex flex-row border-2 border-black">
-              <div>Select a state</div>
-              <div class="ml-64">State</div>
+            <div class="flex flex-row">
+              <div class="underline">Select a state</div>
+              <div class="ml-64 underline">State Statistics</div>
             </div>
 
-            <div class="flex flex-row border-2 border-black">
+            <div class="flex flex-row mt-4">
               <div>
                 {country.states.length !== 0 ? (
                   <select onChange={handleChange}>
@@ -59,7 +59,7 @@ const StateStats = () => {
               <div class="ml-32">
                 {stats ? (
                   <>
-                    <ul>
+                    <ul class="text-left">
                       <li>
                         <span class="font-bold">Active:</span> {stats.active}
                       </li>
