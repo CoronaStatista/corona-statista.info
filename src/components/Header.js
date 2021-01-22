@@ -31,7 +31,9 @@ function Header() {
         <div id="header" className="container">
           <div id="logo">
             <h1>
-              <a href="#">Corona Statista</a>
+              <Link to="/" onClick={closeMobileMenu}>
+                Corona Statista
+              </Link>
             </h1>
           </div>
           <div id="menu">
