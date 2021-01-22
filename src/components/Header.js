@@ -1,66 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./Default.css";
 
 function Header() {
-  const [click, setClick] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
-
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
-
-  const onMouseEnter = () => {
-    if (window.innerWidth < 960) {
-      setDropdown(false);
-    } else {
-      setDropdown(true);
-    }
-  };
-
-  const onMouseLeave = () => {
-    if (window.innerWidth < 960) {
-      setDropdown(false);
-    } else {
-      setDropdown(false);
-    }
-  };
-
   return (
     <div>
       <div id="header-wrapper">
         <div id="header" className="container">
           <div id="logo">
             <h1>
-              <Link to="/" onClick={closeMobileMenu}>
-                Corona Statista
-              </Link>
+              <Link to="/">Corona Statista</Link>
             </h1>
           </div>
           <div id="menu">
             <ul>
               <li>
-                <Link to="/" onClick={closeMobileMenu}>
-                  Homepage
-                </Link>
+                <Link to="/">Homepage</Link>
               </li>
 
-              <li
-                className="nav-item"
-                onMouseEnter={onMouseEnter}
-                onMouseLeave={onMouseLeave}
-              >
-                <Link
-                  to="/about"
-                  className="nav-links"
-                  onClick={closeMobileMenu}
-                >
+              <li className="nav-item">
+                <Link to="/about" className="nav-links">
                   About Corona <i className="fas fa-caret-down" />
                 </Link>
               </li>
               <li>
-                <Link to="/contact-us" onClick={closeMobileMenu}>
-                  Contact Us
-                </Link>
+                <Link to="/contact-us">Contact Us</Link>
               </li>
             </ul>
           </div>
