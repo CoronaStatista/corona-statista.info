@@ -24,9 +24,13 @@ const GermanyStats = () => {
         .filter((c) => c.name === "Germany")
         .map((country) => (
           <div key={country.name}>
-            <h3 class="font-bold text-left">
-              Corona virus cases in {country.name}
-            </h3>
+            <div class="flex row">
+              <h3 class="font-bold text-left">
+                Corona virus cases in {country.name}
+              </h3>
+
+              <div class="ml-40">Last updated: {country.lastUpdate}</div>
+            </div>
             <br />
 
             <div class="text-left">

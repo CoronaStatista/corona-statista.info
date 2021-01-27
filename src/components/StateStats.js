@@ -42,6 +42,7 @@ const StateStats = () => {
             <div class="flex flex-row">
               <div class="underline">Select a state</div>
               <div class="ml-64 underline">State Statistics</div>
+              <div class="ml-64 underline">State Statistics</div>
             </div>
 
             <div class="flex flex-row mt-4">
@@ -73,6 +74,10 @@ const StateStats = () => {
                       <li>
                         <span class="font-bold">Recovered:</span>
                         {stats.recovered}
+                      </li>
+                      <li>
+                        <span class="font-bold">Last updated:</span>
+                        {stats.lastUpdate}
                       </li>
                     </ul>
                   </>
