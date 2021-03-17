@@ -2,6 +2,12 @@ import emailjs from "emailjs-com";
 import React from "react";
 
 export default function ContactUs() {
+  function confirmationAlert() {
+    alert(
+      "Your email message has been successfully sent!  We will get back to you soon!"
+    );
+  }
+
   function sendEmail(e) {
     e.preventDefault();
 
@@ -20,12 +26,17 @@ export default function ContactUs() {
           console.log(error.text);
         }
       );
+
     e.target.reset();
+    confirmationAlert();
   }
 
   return (
     <div id="page-wrapper">
       <div id="featured" className="container">
+        <div class="font-bold text-lg">
+          For all inquiries, please email us using the form below.
+        </div>
         <div className="container">
           <form onSubmit={sendEmail}>
             <div className="row pt-5 mx-auto">
